@@ -6,16 +6,16 @@ use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\loginRequest;
 use Illuminate\Support\Facades\hash;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     public function createUser(CreateUserRequest $request)
-{
+    {
             $user = User::create([
-                'name' => $request -> name,
-                'email' => $request -> email,
-                'password' => Hash::make($request -> password)
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
             ]);
 
             return response()->json([
@@ -25,7 +25,7 @@ class AuthController extends Controller
             ], 200);
 
 
-}
+    }
 
     public function loginUser(loginRequest $request)
 {
